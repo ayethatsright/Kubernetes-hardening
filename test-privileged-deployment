@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: privileged
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: privileged
+  template:
+    metadata:
+      labels:
+        name: privileged        
+    spec:
+      containers:
+        - name: pause
+          image: k8s.gcr.io/pause
+          securityContext:
+            privileged: true
